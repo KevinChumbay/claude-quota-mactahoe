@@ -35,3 +35,49 @@
 /* Anillos (M2) */
 .cqm-ring-label { font-size: 15px; font-weight: 700; }
 .cqm-ring-label-small { font-size: 10px; }
+
+/* Menú desplegable (M2) */
+.cqm-menu-item { padding: 0; }
+.cqm-menu-item:hover, .cqm-menu-item:active { background-color: transparent; }
+
+.cqm-menu { width: 300px; spacing: 8px; padding: 4px 2px; color: #ffffff; }
+.cqm-head { spacing: 8px; }
+.cqm-title-box { spacing: 7px; }
+.cqm-title { font-weight: 700; font-size: 14px; }
+.cqm-badge {
+  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 99px;
+  background-color: rgba(0, 136, 255, 0.25); color: #7cc0ff;
+}
+.cqm-muted { font-size: 12px; color: rgba(255, 255, 255, 0.6); }
+.cqm-banner {
+  font-size: 12px; padding: 7px 10px; border-radius: 10px;
+  background-color: rgba(243, 186, 75, 0.18); color: #ffd88a;
+}
+.cqm-grid { spacing: 8px; }
+.cqm-tile {
+  spacing: 4px; padding: 12px; border-radius: 14px;
+  background-color: rgba(255, 255, 255, 0.07);
+}
+.cqm-tile-name { font-size: 13px; padding-top: 4px; }
+.cqm-models { spacing: 6px; padding: 8px; border-radius: 14px; background-color: rgba(255, 255, 255, 0.05); }
+.cqm-model { spacing: 3px; }
+.cqm-foot { spacing: 6px; padding-top: 2px; }
+.cqm-btn {
+  border-radius: 99px; padding: 5px 11px; font-size: 12px; color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.10);
+  transition-duration: 150ms;
+}
+.cqm-btn:hover { background-color: rgba(255, 255, 255, 0.18); }
+.cqm-btn-box { spacing: 5px; }
+.cqm-btn-icon { icon-size: 14px; }
+
+/* Modo claro */
+.cqm-light { color: #1d1d1f; }
+.cqm-light .cqm-muted { color: rgba(0, 0, 0, 0.55); }
+.cqm-light .cqm-badge { background-color: rgba(0, 136, 255, 0.12); color: #0a6fd6; }
+.cqm-light .cqm-banner { background-color: rgba(214, 138, 0, 0.14); color: #8a5a00; }
+.cqm-light .cqm-tile { background-color: rgba(255, 255, 255, 0.85); }
+.cqm-light .cqm-models { background-color: rgba(255, 255, 255, 0.6); }
+.cqm-light .cqm-ring-label { color: #1d1d1f; }
+.cqm-light .cqm-btn { color: #1d1d1f; background-color: rgba(0, 0, 0, 0.06); }
+.cqm-light .cqm-btn:hover { background-color: rgba(0, 0, 0, 0.12); }

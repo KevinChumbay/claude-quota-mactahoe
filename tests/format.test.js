@@ -15,6 +15,13 @@ test("reinicio en otro día", () => {
   assert.deepEqual(r, { clock: "mar 20:00", short: "mar 20h", remaining: "6 d 19 h" });
 });
 
+test("la hora de reinicio se redondea al minuto (la API manda desfases de segundos)", () => {
+  const jitter = new Date(2026, 9, 21, 2, 29, 59, 900).toISOString();
+  assert.equal(formatReset(jitter, now).clock, "02:30");
+  const late = new Date(2026, 9, 27, 20, 0, 0, 55).toISOString();
+  assert.equal(formatReset(late, now).clock, "mar 20:00");
+});
+
 test("reinicio en menos de una hora", () => {
   assert.equal(formatReset(new Date(2026, 9, 21, 0, 58).toISOString(), now).remaining, "25 min");
 });

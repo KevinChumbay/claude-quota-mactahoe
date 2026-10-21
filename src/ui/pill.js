@@ -29,6 +29,7 @@ class QuotaPill extends St.Widget {
     });
     this._fill = new St.Widget({
       style_class: "cqm-pill-fill cqm-level-0",
+      x_expand: true,
       x_align: Clutter.ActorAlign.START,
       y_expand: true,
       y_align: Clutter.ActorAlign.FILL,
