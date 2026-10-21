@@ -36,6 +36,9 @@ export class MenuView {
   constructor(menu, ext, onRefresh) {
     this._menu = menu;
     this._interface = new Gio.Settings({ schema_id: "org.gnome.desktop.interface" });
+    // El fondo lo dibuja .cqm-menu (claro u oscuro según el modo), no el tema,
+    // para que el texto siempre contraste.
+    menu.box.add_style_class_name("cqm-popup");
 
     const item = new PopupMenu.PopupBaseMenuItem({ reactive: false, can_focus: false, style_class: "cqm-menu-item" });
     this._root = new St.BoxLayout({ vertical: true, style_class: "cqm-menu", x_expand: true });

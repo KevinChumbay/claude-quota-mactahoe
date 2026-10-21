@@ -21,7 +21,7 @@ function run(steps, o = opts) {
 test("aviso al 80 una sola vez", () => {
   const first = evaluateAlerts([weekly(82)], { seven_day: { period: P1, level: 0 } }, opts);
   assert.deepEqual(first.notifications.map(n => n.kind), ["warn"]);
-  assert.equal(first.notifications[0].title, "Claude Code");
+  assert.equal(first.notifications[0].title, "Te acercas al límite");
   assert.equal(first.notifications[0].body, "Llevas 80 % de tu cuota semanal · se reinicia mar 20:00");
   assert.equal(first.notifications[0].urgent, false);
   const again = evaluateAlerts([weekly(85)], first.state, opts);
@@ -37,6 +37,7 @@ test("salto 70→97 solo crítico", () => {
   const out = run([[weekly(70)], [weekly(97)]]);
   assert.deepEqual(out.notifications.map(n => n.kind), ["crit"]);
   assert.equal(out.notifications[0].urgent, true);
+  assert.equal(out.notifications[0].title, "Casi sin cuota");
   assert.equal(out.notifications[0].body, "Llevas 95 % de tu cuota semanal · se reinicia mar 20:00");
 });
 
@@ -56,6 +57,7 @@ test("liberación tras periodo nuevo", () => {
   const out = run([[weekly(90)], [weekly(3, P2)]]);
   assert.deepEqual(out.notifications.map(n => n.kind), ["release"]);
   assert.equal(out.notifications[0].body, "Tu cuota semanal ya está disponible de nuevo");
+  assert.equal(out.notifications[0].title, "Cuota disponible");
 });
 
 test("liberación de la sesión usa su texto", () => {
