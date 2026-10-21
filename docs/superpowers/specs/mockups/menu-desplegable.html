@@ -1,0 +1,100 @@
+<style>
+  .scene{background:linear-gradient(135deg,#1b3a8a,#2f6fd6 55%,#5b8de8);border-radius:14px;padding:14px;font-family:Inter,system-ui,sans-serif;color:#fff}
+  .topbar{display:flex;justify-content:flex-end;align-items:center;gap:14px;font-size:13px;height:26px;margin-bottom:10px}
+  .pill{position:relative;height:20px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+  .pill .f{position:absolute;left:0;top:0;bottom:0}.pill span{position:relative}
+  .menu{margin-left:auto;width:330px;background:rgba(36,36,40,.82);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .menu.light{background:rgba(246,246,248,.86);color:#1d1d1f;border-color:rgba(0,0,0,.08)}
+  .muted{opacity:.6;font-size:12px}
+  .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .title{font-weight:700;font-size:14px;display:flex;gap:7px;align-items:center}
+  .badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;background:rgba(0,136,255,.25);color:#7cc0ff}
+  .light .badge{background:rgba(0,136,255,.12);color:#0a6fd6}
+  .card{background:rgba(255,255,255,.07);border-radius:13px;padding:11px 12px;margin-bottom:8px}
+  .light .card{background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .row{display:flex;justify-content:space-between;align-items:baseline}
+  .big{font-size:22px;font-weight:700}
+  .track{height:7px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden;margin:7px 0 5px}
+  .light .track{background:rgba(0,0,0,.08)}
+  .fill{height:100%;border-radius:99px}
+  .blue{background:#0088FF}.amber{background:#F3BA4B}
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:12px}
+  .btn{background:rgba(255,255,255,.1);border-radius:99px;padding:5px 11px;font-size:12px}
+  .light .btn{background:rgba(0,0,0,.06)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+  .tile{background:rgba(255,255,255,.07);border-radius:14px;padding:12px;text-align:center}
+  .mini{display:flex;justify-content:space-between;font-size:12px;padding:5px 2px}
+  .note{font-size:13px;opacity:.75;margin-top:6px}
+</style>
+
+<h2>¿Cómo quieres el menú al hacer clic?</h2>
+<p class="subtitle">Con la píldora doble (B1) en la barra. Mismos datos: sesión 10 %, semanal 90 %, plan Team. Marca la(s) que te gusten.</p>
+
+<div class="options" data-multiselect>
+
+<div class="option" data-choice="m1" onclick="toggleSelect(this)">
+<div class="letter">M1</div>
+<div class="content"><h3>Tarjetas grandes (estilo Centro de control)</h3>
+<div class="scene">
+  <div class="topbar"><span class="pill" style="width:58px"><span class="f" style="width:10%;background:rgba(0,136,255,.8)"></span><span>5h 10%</span></span><span class="pill" style="width:58px"><span class="f" style="width:90%;background:rgba(243,186,75,.85)"></span><span>7d 90%</span></span><span>🔋 79 %</span></div>
+  <div class="menu">
+    <div class="head"><div class="title">✳ Claude Code <span class="badge">TEAM</span></div><span class="muted">hace 2 min</span></div>
+    <div class="card"><div class="row"><span>Sesión 5 h</span><span class="big">10%</span></div><div class="track"><div class="fill blue" style="width:10%"></div></div><div class="row muted"><span>Se reinicia 02:30</span><span>en 1 h 57 min</span></div></div>
+    <div class="card"><div class="row"><span>Semanal</span><span class="big" style="color:#F3BA4B">90%</span></div><div class="track"><div class="fill amber" style="width:90%"></div></div><div class="row muted"><span>Se reinicia mar 20:00</span><span>en 19 h 27 min</span></div></div>
+    <div class="foot"><span class="btn">↻ Actualizar</span><span class="btn">Abrir uso en claude.ai ↗</span><span class="btn">⚙</span></div>
+  </div>
+</div>
+<p class="note">Cada cuota en su tarjeta, número grande y tiempo hasta el reinicio. Las cuotas por modelo aparecen como tarjetas extra si tu plan las tiene.</p>
+</div></div>
+
+<div class="option" data-choice="m2" onclick="toggleSelect(this)">
+<div class="letter">M2</div>
+<div class="content"><h3>Dos mosaicos con anillo</h3>
+<div class="scene">
+  <div class="topbar"><span class="pill" style="width:58px"><span class="f" style="width:10%;background:rgba(0,136,255,.8)"></span><span>5h 10%</span></span><span class="pill" style="width:58px"><span class="f" style="width:90%;background:rgba(243,186,75,.85)"></span><span>7d 90%</span></span><span>🔋 79 %</span></div>
+  <div class="menu">
+    <div class="head"><div class="title">✳ Claude Code <span class="badge">TEAM</span></div><span class="muted">hace 2 min</span></div>
+    <div class="grid">
+      <div class="tile"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="7"/><circle cx="32" cy="32" r="26" fill="none" stroke="#0088FF" stroke-width="7" stroke-dasharray="16.3 163.4" transform="rotate(-90 32 32)" stroke-linecap="round"/><text x="32" y="37" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">10%</text></svg><div style="font-size:13px;margin-top:4px">Sesión 5 h</div><div class="muted">02:30 · 1 h 57</div></div>
+      <div class="tile"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="7"/><circle cx="32" cy="32" r="26" fill="none" stroke="#F3BA4B" stroke-width="7" stroke-dasharray="147 163.4" transform="rotate(-90 32 32)" stroke-linecap="round"/><text x="32" y="37" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">90%</text></svg><div style="font-size:13px;margin-top:4px">Semanal</div><div class="muted">mar 20:00 · 19 h</div></div>
+    </div>
+    <div class="foot"><span class="btn">↻ Actualizar</span><span class="btn">claude.ai ↗</span><span class="btn">⚙</span></div>
+  </div>
+</div>
+<p class="note">Dos anillos grandes lado a lado, como los widgets de macOS. Más visual, menos texto.</p>
+</div></div>
+
+<div class="option" data-choice="m3" onclick="toggleSelect(this)">
+<div class="letter">M3</div>
+<div class="content"><h3>Lista compacta (estilo menú de batería)</h3>
+<div class="scene">
+  <div class="topbar"><span class="pill" style="width:58px"><span class="f" style="width:10%;background:rgba(0,136,255,.8)"></span><span>5h 10%</span></span><span class="pill" style="width:58px"><span class="f" style="width:90%;background:rgba(243,186,75,.85)"></span><span>7d 90%</span></span><span>🔋 79 %</span></div>
+  <div class="menu" style="width:290px">
+    <div class="head"><div class="title">Claude Code</div><span class="badge">TEAM</span></div>
+    <div class="mini"><span>Sesión 5 h</span><b>10 %</b></div><div class="track" style="margin-top:0"><div class="fill blue" style="width:10%"></div></div><div class="muted" style="margin-bottom:8px">Se reinicia a las 02:30 (en 1 h 57 min)</div>
+    <div class="mini"><span>Semanal</span><b style="color:#F3BA4B">90 %</b></div><div class="track" style="margin-top:0"><div class="fill amber" style="width:90%"></div></div><div class="muted">Se reinicia el martes 20:00 (en 19 h 27 min)</div>
+    <hr style="border:0;border-top:1px solid rgba(255,255,255,.12);margin:10px 0">
+    <div class="mini"><span>Actualizar ahora</span><span class="muted">hace 2 min</span></div>
+    <div class="mini"><span>Ver uso en claude.ai</span><span>↗</span></div>
+    <div class="mini"><span>Preferencias…</span></div>
+  </div>
+</div>
+<p class="note">Sobrio, como los menús nativos de macOS: barras finas y acciones como filas de texto.</p>
+</div></div>
+
+<div class="option" data-choice="m4" onclick="toggleSelect(this)">
+<div class="letter">M4</div>
+<div class="content"><h3>Tarjetas grandes — versión clara</h3>
+<div class="scene">
+  <div class="topbar"><span class="pill" style="width:58px"><span class="f" style="width:10%;background:rgba(0,136,255,.8)"></span><span>5h 10%</span></span><span class="pill" style="width:58px"><span class="f" style="width:90%;background:rgba(243,186,75,.85)"></span><span>7d 90%</span></span><span>🔋 79 %</span></div>
+  <div class="menu light">
+    <div class="head"><div class="title">✳ Claude Code <span class="badge">TEAM</span></div><span class="muted">hace 2 min</span></div>
+    <div class="card"><div class="row"><span>Sesión 5 h</span><span class="big">10%</span></div><div class="track"><div class="fill blue" style="width:10%"></div></div><div class="row muted"><span>Se reinicia 02:30</span><span>en 1 h 57 min</span></div></div>
+    <div class="card"><div class="row"><span>Semanal</span><span class="big" style="color:#d68a00">90%</span></div><div class="track"><div class="fill amber" style="width:90%"></div></div><div class="row muted"><span>Se reinicia mar 20:00</span><span>en 19 h 27 min</span></div></div>
+    <div class="foot"><span class="btn">↻ Actualizar</span><span class="btn">Abrir uso en claude.ai ↗</span><span class="btn">⚙</span></div>
+  </div>
+</div>
+<p class="note">La misma M1 en modo claro. El menú seguiría automáticamente tu modo claro/oscuro.</p>
+</div></div>
+
+</div>

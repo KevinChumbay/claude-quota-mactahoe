@@ -1,0 +1,83 @@
+<style>
+  .bar{background:linear-gradient(90deg,#1b3a8a,#2f6fd6 55%,#1d4fb8);height:40px;border-radius:10px;display:flex;align-items:center;justify-content:flex-end;gap:20px;padding:0 18px;color:#fff;font:500 14px Inter,system-ui,sans-serif;margin:8px 0 4px}
+  .ico{opacity:.9}
+  .note{font-size:13px;opacity:.75;margin-top:6px}
+  .row{display:flex;align-items:center;gap:6px}
+  .pill{position:relative;height:22px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+  .pill .f{position:absolute;left:0;top:0;bottom:0}
+  .pill span{position:relative}
+  .batt{position:relative;width:34px;height:16px;border:1.6px solid rgba(255,255,255,.85);border-radius:5px;padding:1.5px;box-sizing:border-box}
+  .batt:after{content:"";position:absolute;right:-4.5px;top:4px;width:2.5px;height:5px;background:rgba(255,255,255,.85);border-radius:0 2px 2px 0}
+  .batt .f{height:100%;border-radius:2.5px}
+  .sec{font-size:12px;opacity:.9}
+  .group{display:flex;gap:16px;flex-wrap:wrap}
+</style>
+
+<h2>Variantes de B (píldora) y D (anillo)</h2>
+<p class="subtitle">Mismos valores: sesión 10 %, semanal 90 %. Marca las que te gusten.</p>
+
+<h3>Píldoras</h3>
+<div class="options" data-multiselect>
+  <div class="option" data-choice="b1" onclick="toggleSelect(this)">
+    <div class="letter">B1</div>
+    <div class="content"><h3>Píldora doble (sesión | semanal)</h3>
+      <div class="bar"><span class="ico">✓ 1</span><span class="ico">📋</span>
+        <div class="row">
+          <div class="pill" style="width:62px"><div class="f" style="width:10%;background:rgba(0,136,255,.8)"></div><span>5h 10%</span></div>
+          <div class="pill" style="width:62px"><div class="f" style="width:90%;background:rgba(243,186,75,.85)"></div><span>7d 90%</span></div>
+        </div><span class="ico">📶 🔊 🔋 79 %</span></div>
+      <p class="note">Dos cápsulas, cada una con su relleno y porcentaje.</p></div>
+  </div>
+
+  <div class="option" data-choice="b2" onclick="toggleSelect(this)">
+    <div class="letter">B2</div>
+    <div class="content"><h3>Pila tipo batería de macOS</h3>
+      <div class="bar"><span class="ico">✓ 1</span><span class="ico">📋</span>
+        <div class="row"><span class="sec">✳ 10%</span><div class="batt"><div class="f" style="width:10%;background:#fff"></div></div></div>
+        <span class="ico">📶 🔊 🔋 79 %</span></div>
+      <p class="note">Ícono de pila igual al de la batería del Mac, se vacía/llena con la sesión. Se pinta ámbar o rojo si la semanal pasa del 80/95 %.</p></div>
+  </div>
+
+  <div class="option" data-choice="b3" onclick="toggleSelect(this)">
+    <div class="letter">B3</div>
+    <div class="content"><h3>Píldora con línea inferior</h3>
+      <div class="bar"><span class="ico">✓ 1</span><span class="ico">📋</span>
+        <div style="display:flex;flex-direction:column;gap:2px;align-items:stretch">
+          <div class="pill" style="width:78px;height:18px"><div class="f" style="width:10%;background:rgba(0,136,255,.8)"></div><span>✳ 10 %</span></div>
+          <div style="height:3px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden"><div style="width:90%;height:100%;background:#F3BA4B"></div></div>
+        </div><span class="ico">📶 🔊 🔋 79 %</span></div>
+      <p class="note">La sesión en la píldora y la semanal como una línea fina debajo.</p></div>
+  </div>
+</div>
+
+<h3>Anillos</h3>
+<div class="options" data-multiselect>
+  <div class="option" data-choice="d1" onclick="toggleSelect(this)">
+    <div class="letter">D1</div>
+    <div class="content"><h3>Anillo doble + porcentaje</h3>
+      <div class="bar"><span class="ico">✓ 1</span><span class="ico">📋</span>
+        <div class="row"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="3"/><circle cx="12" cy="12" r="10" fill="none" stroke="#F3BA4B" stroke-width="3" stroke-dasharray="56.5 62.8" transform="rotate(-90 12 12)" stroke-linecap="round"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="3"/><circle cx="12" cy="12" r="5.5" fill="none" stroke="#0088FF" stroke-width="3" stroke-dasharray="3.5 34.6" transform="rotate(-90 12 12)" stroke-linecap="round"/></svg><span class="sec">10%</span></div>
+        <span class="ico">📶 🔊 🔋 79 %</span></div>
+      <p class="note">Los dos anillos y al lado el % de la sesión.</p></div>
+  </div>
+
+  <div class="option" data-choice="d2" onclick="toggleSelect(this)">
+    <div class="letter">D2</div>
+    <div class="content"><h3>Dos anillos separados</h3>
+      <div class="bar"><span class="ico">✓ 1</span><span class="ico">📋</span>
+        <div class="row">
+          <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="3.5"/><circle cx="12" cy="12" r="9" fill="none" stroke="#0088FF" stroke-width="3.5" stroke-dasharray="5.6 56.5" transform="rotate(-90 12 12)" stroke-linecap="round"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="3.5"/><circle cx="12" cy="12" r="9" fill="none" stroke="#F3BA4B" stroke-width="3.5" stroke-dasharray="50.9 56.5" transform="rotate(-90 12 12)" stroke-linecap="round"/></svg>
+        </div><span class="ico">📶 🔊 🔋 79 %</span></div>
+      <p class="note">Un anillo por cuota, lado a lado. Fácil de leer.</p></div>
+  </div>
+
+  <div class="option" data-choice="d3" onclick="toggleSelect(this)">
+    <div class="letter">D3</div>
+    <div class="content"><h3>Anillo con logo de Claude dentro</h3>
+      <div class="bar"><span class="ico">✓ 1</span><span class="ico">📋</span>
+        <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2.6"/><circle cx="12" cy="12" r="10" fill="none" stroke="#0088FF" stroke-width="2.6" stroke-dasharray="6.3 62.8" transform="rotate(-90 12 12)" stroke-linecap="round"/><text x="12" y="16" text-anchor="middle" font-size="11" fill="#D97757">✳</text></svg>
+        <span class="ico">📶 🔊 🔋 79 %</span></div>
+      <p class="note">Un solo anillo (sesión) con el asterisco naranja de Claude al centro. El anillo cambia a ámbar/rojo según la semanal.</p></div>
+  </div>
+</div>

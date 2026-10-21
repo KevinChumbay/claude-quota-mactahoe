@@ -1,0 +1,70 @@
+<style>
+  .bar{background:linear-gradient(90deg,#1b3a8a,#2f6fd6 55%,#1d4fb8);height:44px;border-radius:12px;display:flex;align-items:center;justify-content:flex-end;gap:16px;padding:0 18px;color:#fff;font:500 13px Inter,system-ui,sans-serif;margin:10px 0 4px}
+  .pill{position:relative;height:20px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;white-space:nowrap;transition:width .35s cubic-bezier(.2,.8,.2,1);width:62px;cursor:default}
+  .pill .f{position:absolute;left:0;top:0;bottom:0;transition:width .7s cubic-bezier(.2,.8,.2,1),background-color .6s}
+  .pill .t{position:relative}
+  .pill .x{position:relative;opacity:0;max-width:0;overflow:hidden;transition:opacity .25s .1s,max-width .35s;display:inline-block;vertical-align:bottom}
+  .hov .pill:hover{width:104px}.hov .pill:hover .x{opacity:.85;max-width:60px}
+  .shine:after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-50%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:sweep .9s ease-out}
+  @keyframes sweep{to{left:120%}}
+  .wave .f{background-image:linear-gradient(90deg,rgba(255,255,255,0) 0,rgba(255,255,255,.25) 50%,rgba(255,255,255,0) 100%);background-size:40px 100%;animation:flow 1.8s linear infinite}
+  @keyframes flow{from{background-position:0 0}to{background-position:40px 0}}
+  .breath .f{animation:breath 2.4s ease-in-out infinite}
+  @keyframes breath{50%{filter:brightness(1.35)}}
+  .pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+  @keyframes pop{40%{transform:scale(1.12)}}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+  .controls button{background:#2a2a30;color:#fff;border:1px solid #444;border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer}
+  .note{font-size:13px;opacity:.75;margin-top:4px}
+  .cost{font-size:11px;font-weight:700;padding:2px 7px;border-radius:99px;margin-left:6px}
+  .ok{background:rgba(121,183,87,.2);color:#9be07a}.warn{background:rgba(237,95,93,.2);color:#ff9a98}
+</style>
+
+<h2>Animaciones en las píldoras de la barra</h2>
+<p class="subtitle">Marca las que te gusten. Las de “consumo continuo” se animan todo el tiempo y gastan algo de CPU.</p>
+
+<div class="options" data-multiselect>
+
+<div class="option" data-choice="p1" onclick="toggleSelect(this)"><div class="letter">P1</div><div class="content">
+<h3>Al pasar el mouse se estira y muestra la hora <span class="cost ok">solo al pasar el mouse</span></h3>
+<div class="bar hov"><span>✓ 1</span>
+  <span class="pill"><span class="f" style="width:10%;background:rgba(0,136,255,.8)"></span><span class="t">5h 10%</span><span class="x">&nbsp;· 02:30</span></span>
+  <span class="pill"><span class="f" style="width:90%;background:rgba(243,186,75,.85)"></span><span class="t">7d 90%</span><span class="x">&nbsp;· mar 20h</span></span>
+<span>🔋 79 %</span></div>
+<p class="note">Pasa el mouse sobre las píldoras: se alargan y aparece cuándo se reinicia.</p></div></div>
+
+<div class="option" data-choice="p2" onclick="toggleSelect(this)"><div class="letter">P2</div><div class="content">
+<h3>Destello al actualizarse <span class="cost ok">1 vez cada 5 min</span></h3>
+<div class="bar"><span>✓ 1</span>
+  <span class="pill" id="s1"><span class="f" style="width:10%;background:rgba(0,136,255,.8)"></span><span class="t">5h 10%</span></span>
+  <span class="pill" id="s2"><span class="f" style="width:90%;background:rgba(243,186,75,.85)"></span><span class="t">7d 90%</span></span>
+<span>🔋 79 %</span></div>
+<div class="controls"><button onclick="event.stopPropagation();[s1,s2].forEach(p=>{p.classList.remove('shine');void p.offsetWidth;p.classList.add('shine')})">Probar destello</button></div>
+<p class="note">Un brillo cruza la píldora cuando llegan datos nuevos, como un reflejo de vidrio.</p></div></div>
+
+<div class="option" data-choice="p3" onclick="toggleSelect(this)"><div class="letter">P3</div><div class="content">
+<h3>Rebote cuando sube el porcentaje <span class="cost ok">solo cuando cambia</span></h3>
+<div class="bar"><span>✓ 1</span>
+  <span class="pill" id="b1"><span class="f" id="bf1" style="width:10%;background:rgba(0,136,255,.8)"></span><span class="t" id="bt1">5h 10%</span></span>
+  <span class="pill"><span class="f" style="width:90%;background:rgba(243,186,75,.85)"></span><span class="t">7d 90%</span></span>
+<span>🔋 79 %</span></div>
+<div class="controls"><button onclick="event.stopPropagation();let v=Math.min(parseInt(bt1.textContent.slice(3))+15,79);bf1.style.width=v+'%';bt1.textContent='5h '+v+'%';b1.classList.remove('pop');void b1.offsetWidth;b1.classList.add('pop')">Simular subida</button></div>
+<p class="note">La píldora da un pequeño rebote y el relleno avanza cuando sube tu consumo.</p></div></div>
+
+<div class="option" data-choice="p4" onclick="toggleSelect(this)"><div class="letter">P4</div><div class="content">
+<h3>Relleno con corriente de luz <span class="cost warn">consumo continuo</span></h3>
+<div class="bar wave"><span>✓ 1</span>
+  <span class="pill"><span class="f" style="width:10%;background-color:rgba(0,136,255,.8)"></span><span class="t">5h 10%</span></span>
+  <span class="pill"><span class="f" style="width:90%;background-color:rgba(243,186,75,.85)"></span><span class="t">7d 90%</span></span>
+<span>🔋 79 %</span></div>
+<p class="note">Una luz recorre el relleno sin parar, como líquido moviéndose. Bonito pero se anima siempre.</p></div></div>
+
+<div class="option" data-choice="p5" onclick="toggleSelect(this)"><div class="letter">P5</div><div class="content">
+<h3>Respiración suave al estar en ámbar/rojo <span class="cost warn">continuo solo ≥ 80 %</span></h3>
+<div class="bar breath"><span>✓ 1</span>
+  <span class="pill" style="background:rgba(255,255,255,.18)"><span class="f" style="width:10%;background:rgba(0,136,255,.8);animation:none"></span><span class="t">5h 10%</span></span>
+  <span class="pill"><span class="f" style="width:90%;background:rgba(243,186,75,.85)"></span><span class="t">7d 90%</span></span>
+<span>🔋 79 %</span></div>
+<p class="note">Solo la píldora en aviso brilla y se apaga lentamente, para que la notes de reojo. Mientras estés bajo 80 % no se anima nada.</p></div></div>
+
+</div>
