@@ -82,6 +82,7 @@ class QuotaIndicator extends PanelMenu.Button {
       failures: this._failures,
       lastError: this._lastError,
       nowMs: Date.now(),
+      maxAgeMs: 2 * this._refreshSeconds() * 1000,
     });
   }
 

@@ -9,6 +9,23 @@ test("datos frescos", () => {
   assert.deepEqual(computeStatus(base), { mode: "fresh", banner: null, ago: "hace 2 min" });
 });
 
+test("datos guardados más viejos que el máximo se atenúan aunque no haya error", () => {
+  const s = computeStatus({ ...base, lastOkMs: nowMs - 14 * 3600e3, maxAgeMs: 10 * 60e3 });
+  assert.equal(s.mode, "stale");
+  assert.equal(s.banner, null);
+  assert.equal(s.ago, "hace 14 h");
+});
+
+test("datos viejos con un fallo de red ya muestran la franja", () => {
+  const s = computeStatus({ ...base, lastOkMs: nowMs - 14 * 3600e3, maxAgeMs: 10 * 60e3, failures: 1, lastError: "network" });
+  assert.equal(s.mode, "stale");
+  assert.equal(s.banner, "Sin conexión · datos de hace 14 h");
+});
+
+test("datos recientes dentro del máximo siguen frescos", () => {
+  assert.equal(computeStatus({ ...base, maxAgeMs: 10 * 60e3 }).mode, "fresh");
+});
+
 test("cargando la primera vez", () => {
   const s = computeStatus({ ...base, hasData: false, lastOkMs: 0 });
   assert.equal(s.mode, "loading");

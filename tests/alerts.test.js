@@ -60,6 +60,20 @@ test("liberación tras periodo nuevo", () => {
   assert.equal(out.notifications[0].title, "Cuota disponible");
 });
 
+test("periodo vencido con resets_at null cuenta como periodo nuevo", () => {
+  // La ventana P1 ya pasó (now es posterior) y la API ya no manda hora de reinicio.
+  const later = { ...opts, now: new Date(new Date(P1).getTime() + 5 * 60e3) };
+  const out = evaluateAlerts([weekly(0, null)], { seven_day: { period: P1, level: 2 } }, later);
+  assert.deepEqual(out.notifications.map(n => n.kind), ["release"]);
+  assert.equal(out.state.seven_day.level, 0);
+});
+
+test("resets_at null con periodo aún vigente sigue siendo el mismo periodo", () => {
+  const out = evaluateAlerts([weekly(86, null)], { seven_day: { period: P1, level: 1 } }, opts);
+  assert.deepEqual(out.notifications, []);
+  assert.equal(out.state.seven_day.period, P1);
+});
+
 test("liberación de la sesión usa su texto", () => {
   const s = (util, resetsAt) => ({ key: "five_hour", label: "Sesión 5 h", util, resetsAt });
   const out = run([[s(96, P1)], [s(0, P2)]]);
