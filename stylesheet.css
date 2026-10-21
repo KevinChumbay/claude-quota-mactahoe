@@ -1,0 +1,37 @@
+/* Claude Quota MacTahoe */
+
+/* Píldoras de la barra (B1) */
+.cqm-indicator-box { spacing: 6px; }
+
+.cqm-pill {
+  height: 20px;
+  border-radius: 99px;
+  background-color: rgba(255, 255, 255, 0.18);
+  transition-duration: 300ms;
+}
+
+.cqm-pill-glow {
+  box-shadow: 0 0 0 3px rgba(237, 95, 93, 0.55);
+  background-color: rgba(255, 255, 255, 0.32);
+}
+
+.cqm-pill-fill {
+  border-radius: 99px;
+  transition-duration: 600ms;
+}
+
+.cqm-level-0 { background-color: rgba(0, 136, 255, 0.80); }
+.cqm-level-1 { background-color: rgba(243, 186, 75, 0.85); }
+.cqm-level-2 { background-color: rgba(237, 95, 93, 0.85); }
+
+.cqm-pill-label {
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.cqm-pill-tail { color: rgba(255, 255, 255, 0.85); }
+
+/* Anillos (M2) */
+.cqm-ring-label { font-size: 15px; font-weight: 700; }
+.cqm-ring-label-small { font-size: 10px; }
