@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.claude-quota-mactahoe"
+          path="/org/gnome/shell/extensions/claude-quota-mactahoe/">
+    <key name="refresh-minutes" type="u">
+      <range min="1" max="60"/>
+      <default>5</default>
+      <summary>Minutos entre actualizaciones</summary>
+    </key>
+    <key name="warn-threshold" type="u">
+      <range min="50" max="99"/>
+      <default>80</default>
+      <summary>Porcentaje de aviso</summary>
+    </key>
+    <key name="crit-threshold" type="u">
+      <range min="51" max="100"/>
+      <default>95</default>
+      <summary>Porcentaje crítico</summary>
+    </key>
+    <key name="alerts-enabled" type="b">
+      <default>true</default>
+      <summary>Mostrar avisos al acercarse a los límites</summary>
+    </key>
+    <key name="notify-release" type="b">
+      <default>true</default>
+      <summary>Avisar cuando una cuota agotada se libera</summary>
+    </key>
+    <key name="alert-state" type="s">
+      <default>"{}"</default>
+      <summary>Avisos ya enviados por periodo (interno)</summary>
+    </key>
+    <key name="last-data" type="s">
+      <default>""</default>
+      <summary>Últimos datos de uso recibidos (interno)</summary>
+    </key>
+    <key name="last-ok-ms" type="x">
+      <default>0</default>
+      <summary>Momento de la última actualización correcta, en ms (interno)</summary>
+    </key>
+  </schema>
+</schemalist>
