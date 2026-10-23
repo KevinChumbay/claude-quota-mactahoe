@@ -28,3 +28,7 @@ npm test   # node --test
 ```
 
 `tools/probe.js` consulta la API fuera de GNOME Shell: `gjs -m tools/probe.js`.
+
+## Licencia
+
+GPL-2.0-or-later. Ver [LICENSE](LICENSE).

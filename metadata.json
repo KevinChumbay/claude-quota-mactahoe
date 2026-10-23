@@ -3,7 +3,10 @@
   "name": "Claude Quota MacTahoe",
   "description": "Cuotas de Claude Code (sesión 5 h y semanal) en la barra superior, con píldoras, anillos estilo macOS y avisos al acercarte al límite. Solo lee la sesión de Claude Code; no modifica tus credenciales.",
   "version": 1,
-  "url": "",
-  "shell-version": ["49", "50"],
+  "url": "https://github.com/KevinChumbay/claude-quota-mactahoe",
+  "shell-version": [
+    "49",
+    "50"
+  ],
   "settings-schema": "org.gnome.shell.extensions.claude-quota-mactahoe"
 }
